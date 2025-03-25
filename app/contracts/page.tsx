@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import type {
@@ -41,7 +41,7 @@ import { useTaskScheduler } from "@/hooks/use-task-scheduler";
 import { useDebounce } from "@/hooks/use-debounce";
 import { useContractStore } from "@/states/contract";
 
-export default function ContractsPage() {
+function Contracts() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -311,5 +311,19 @@ export default function ContractsPage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+export default function ContractsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex justify-center py-8">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+        </div>
+      }
+    >
+      <Contracts />
+    </Suspense>
   );
 }
