@@ -1,0 +1,9 @@
+[
+  {
+    "title": "NDA",
+    "description": "Confidentiality agreement",
+    "status": "Finalized",
+    "content": "Do not disclose...",
+    "parties": ["Eve", "Acme Corp"]
+  }
+]
